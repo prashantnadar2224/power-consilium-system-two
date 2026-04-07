@@ -1,14 +1,14 @@
 import { motion } from "framer-motion";
-import { Wrench, Monitor, Settings, HeadphonesIcon, Battery, Server } from "lucide-react";
+import { Wrench, Settings, HeadphonesIcon, Battery, Server, ClipboardCheck } from "lucide-react";
 
-/* Services section with animated cards */
+/* Services section with real PCS offerings */
 const services = [
-  { icon: Wrench, title: "UPS AMC", desc: "Annual Maintenance Contracts for all brands of UPS with Pan India coverage and multivendor support." },
+  { icon: Wrench, title: "UPS AMC Services", desc: "Annual Maintenance Contracts for all brands of UPS with Pan India coverage and multivendor support." },
   { icon: Battery, title: "UPS Rental", desc: "Flexible UPS rental solutions for temporary power needs – events, projects, and emergency backup." },
-  { icon: Settings, title: "Repair Services", desc: "Expert card-level repair services for all UPS makes and models with quick turnaround time." },
-  { icon: Monitor, title: "Consulting", desc: "System design, engineering and consultancy for optimal power infrastructure planning." },
-  { icon: Server, title: "Data Center Solutions", desc: "Complete data center power solutions including design, installation and ongoing maintenance." },
-  { icon: HeadphonesIcon, title: "Remote Support", desc: "Real-time monitoring, diagnostics and remote support to minimize downtime." },
+  { icon: Settings, title: "UPS Repairing Services", desc: "Expert card-level repair services for all UPS makes and models with quick turnaround time." },
+  { icon: ClipboardCheck, title: "Energy & Power Audit", desc: "Comprehensive energy and power audit services to optimize your power infrastructure efficiency." },
+  { icon: Server, title: "UPS & Inverter Supply", desc: "Wholesale supply of Industrial UPS, Online UPS, Power Inverters, SMF & Tubular Batteries from top brands." },
+  { icon: HeadphonesIcon, title: "Remote Support", desc: "Real-time monitoring, diagnostics and remote support to minimize downtime across 30+ locations." },
 ];
 
 const Services = () => (
@@ -24,7 +24,7 @@ const Services = () => (
         <h2 className="text-3xl md:text-4xl font-bold text-foreground mb-4">Our Services</h2>
         <div className="w-20 h-1 bg-primary mx-auto mb-6" />
         <p className="max-w-2xl mx-auto text-muted-foreground">
-          Comprehensive UPS solutions from installation to maintenance – we cover it all.
+          Comprehensive UPS solutions from installation to maintenance – we cover it all across Pan India.
         </p>
       </motion.div>
 
