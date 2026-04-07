@@ -4,10 +4,12 @@ import HeroSlider from "@/components/HeroSlider";
 import Loader from "@/components/Loader";
 import BackToTop from "@/components/BackToTop";
 
-/* Lazy load below-fold sections for performance */
+/* Lazy load below-fold sections */
 const About = lazy(() => import("@/components/About"));
 const Services = lazy(() => import("@/components/Services"));
 const Products = lazy(() => import("@/components/Products"));
+const WhyChooseUs = lazy(() => import("@/components/WhyChooseUs"));
+const Testimonials = lazy(() => import("@/components/Testimonials"));
 const Clients = lazy(() => import("@/components/Clients"));
 const Contact = lazy(() => import("@/components/Contact"));
 const Footer = lazy(() => import("@/components/Footer"));
@@ -15,7 +17,6 @@ const Footer = lazy(() => import("@/components/Footer"));
 const Index = () => {
   const [loading, setLoading] = useState(true);
 
-  // Simulate initial load
   useEffect(() => {
     const timer = setTimeout(() => setLoading(false), 800);
     return () => clearTimeout(timer);
@@ -32,13 +33,13 @@ const Index = () => {
           <About />
           <Services />
           <Products />
+          <WhyChooseUs />
+          <Testimonials />
           <Clients />
           <Contact />
         </Suspense>
       </main>
-      <Suspense fallback={null}>
-        <Footer />
-      </Suspense>
+      <Suspense fallback={null}><Footer /></Suspense>
       <BackToTop />
     </>
   );

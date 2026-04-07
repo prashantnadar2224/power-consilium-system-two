@@ -1,15 +1,14 @@
 import { useState } from "react";
 import { motion } from "framer-motion";
-import { Phone, Mail, MapPin, Send } from "lucide-react";
+import { Phone, Mail, MapPin, Send, Clock } from "lucide-react";
 
-/* Contact form + info section */
+/* Contact form + info + Google Maps */
 const Contact = () => {
   const [form, setForm] = useState({ name: "", email: "", phone: "", message: "" });
   const [submitted, setSubmitted] = useState(false);
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
-    // Frontend-only: just show success message
     setSubmitted(true);
     setTimeout(() => setSubmitted(false), 3000);
     setForm({ name: "", email: "", phone: "", message: "" });
@@ -29,7 +28,7 @@ const Contact = () => {
           <div className="w-20 h-1 bg-secondary mx-auto" />
         </motion.div>
 
-        <div className="grid md:grid-cols-2 gap-10">
+        <div className="grid lg:grid-cols-2 gap-10 mb-12">
           {/* Contact info */}
           <motion.div
             initial={{ opacity: 0, x: -30 }}
@@ -52,7 +51,11 @@ const Contact = () => {
               </a>
               <div className="flex items-start gap-3 text-foreground">
                 <MapPin className="w-5 h-5 text-primary mt-0.5" aria-hidden="true" />
-                <span>Bangalore, India (Head Office)<br />Mumbai | Pune | Delhi</span>
+                <span>Mumbai, Maharashtra (Head Office)<br />Pune | Bangalore | Delhi</span>
+              </div>
+              <div className="flex items-start gap-3 text-foreground">
+                <Clock className="w-5 h-5 text-primary mt-0.5" aria-hidden="true" />
+                <span>Mon – Sat: 9:00 AM – 7:00 PM<br />Sunday: Closed</span>
               </div>
             </div>
           </motion.div>
@@ -67,54 +70,37 @@ const Contact = () => {
             className="bg-card dark:bg-card rounded-xl p-6 shadow-md space-y-4"
             aria-label="Contact form"
           >
-            <input
-              type="text"
-              placeholder="Your Name"
-              required
-              value={form.name}
-              onChange={(e) => setForm({ ...form, name: e.target.value })}
-              className="w-full px-4 py-3 rounded-lg border border-border bg-background text-foreground placeholder:text-muted-foreground focus:outline-none focus:ring-2 focus:ring-primary"
-              aria-label="Your name"
-            />
-            <input
-              type="email"
-              placeholder="Your Email"
-              required
-              value={form.email}
-              onChange={(e) => setForm({ ...form, email: e.target.value })}
-              className="w-full px-4 py-3 rounded-lg border border-border bg-background text-foreground placeholder:text-muted-foreground focus:outline-none focus:ring-2 focus:ring-primary"
-              aria-label="Your email"
-            />
-            <input
-              type="tel"
-              placeholder="Phone Number"
-              value={form.phone}
-              onChange={(e) => setForm({ ...form, phone: e.target.value })}
-              className="w-full px-4 py-3 rounded-lg border border-border bg-background text-foreground placeholder:text-muted-foreground focus:outline-none focus:ring-2 focus:ring-primary"
-              aria-label="Your phone number"
-            />
-            <textarea
-              placeholder="Your Message"
-              required
-              rows={4}
-              value={form.message}
-              onChange={(e) => setForm({ ...form, message: e.target.value })}
-              className="w-full px-4 py-3 rounded-lg border border-border bg-background text-foreground placeholder:text-muted-foreground focus:outline-none focus:ring-2 focus:ring-primary resize-none"
-              aria-label="Your message"
-            />
-            <button
-              type="submit"
-              className="w-full py-3 bg-primary text-primary-foreground font-semibold rounded-lg hover:opacity-90 transition-opacity flex items-center justify-center gap-2"
-              aria-label="Send message"
-              title="Send message"
-            >
+            <input type="text" placeholder="Your Name" required value={form.name} onChange={(e) => setForm({ ...form, name: e.target.value })} className="w-full px-4 py-3 rounded-lg border border-border bg-background text-foreground placeholder:text-muted-foreground focus:outline-none focus:ring-2 focus:ring-primary" aria-label="Your name" />
+            <input type="email" placeholder="Your Email" required value={form.email} onChange={(e) => setForm({ ...form, email: e.target.value })} className="w-full px-4 py-3 rounded-lg border border-border bg-background text-foreground placeholder:text-muted-foreground focus:outline-none focus:ring-2 focus:ring-primary" aria-label="Your email" />
+            <input type="tel" placeholder="Phone Number" value={form.phone} onChange={(e) => setForm({ ...form, phone: e.target.value })} className="w-full px-4 py-3 rounded-lg border border-border bg-background text-foreground placeholder:text-muted-foreground focus:outline-none focus:ring-2 focus:ring-primary" aria-label="Your phone number" />
+            <textarea placeholder="Your Message" required rows={4} value={form.message} onChange={(e) => setForm({ ...form, message: e.target.value })} className="w-full px-4 py-3 rounded-lg border border-border bg-background text-foreground placeholder:text-muted-foreground focus:outline-none focus:ring-2 focus:ring-primary resize-none" aria-label="Your message" />
+            <button type="submit" className="w-full py-3 bg-primary text-primary-foreground font-semibold rounded-lg hover:opacity-90 transition-opacity flex items-center justify-center gap-2" aria-label="Send message" title="Send message">
               <Send className="w-4 h-4" aria-hidden="true" /> Send Message
             </button>
-            {submitted && (
-              <p className="text-center text-secondary font-medium" role="alert">Thank you! We'll get back to you soon.</p>
-            )}
+            {submitted && <p className="text-center text-secondary font-medium" role="alert">Thank you! We'll get back to you soon.</p>}
           </motion.form>
         </div>
+
+        {/* Google Maps embed */}
+        <motion.div
+          initial={{ opacity: 0, y: 30 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.5 }}
+          className="rounded-xl overflow-hidden shadow-md border border-border"
+        >
+          <iframe
+            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d241317.11609823277!2d72.74109995!3d19.08219865!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3be7c6306644edc1%3A0x5da4ed8f8d648c69!2sMumbai%2C%20Maharashtra!5e0!3m2!1sen!2sin!4v1700000000000!5m2!1sen!2sin"
+            width="100%"
+            height="350"
+            style={{ border: 0 }}
+            allowFullScreen
+            loading="lazy"
+            referrerPolicy="no-referrer-when-downgrade"
+            title="Power Consilium System - Mumbai Office Location"
+            aria-label="Google Maps showing Power Consilium System office location in Mumbai"
+          />
+        </motion.div>
       </div>
     </section>
   );
