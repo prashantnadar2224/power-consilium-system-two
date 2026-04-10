@@ -1,7 +1,7 @@
 import { motion } from "framer-motion";
-import { Target, Shield, Zap, Users, MapPin, Building } from "lucide-react";
+import { Target, Shield, Zap, Users, MapPin, Building, CheckCircle } from "lucide-react";
 
-/* About Us section with real PCS details */
+/* Intermax-style "Who We Are" section with image grid + experience badge */
 const stats = [
   { icon: Zap, value: "1000+", label: "UPS Units Managed" },
   { icon: Users, value: "500+", label: "Happy Clients" },
@@ -9,70 +9,79 @@ const stats = [
   { icon: Shield, value: "10+", label: "Years Experience" },
 ];
 
+const highlights = [
+  "Pan India UPS AMC Services",
+  "Card-level UPS Repairing",
+  "Energy & Power Audit",
+  "Wholesale UPS & Battery Supply",
+  "Multivendor Support (APC, Emerson, Numeric)",
+  "24/7 Remote Monitoring & Support",
+];
+
 const About = () => (
-  <section id="about" className="py-16 md:py-24 bg-muted dark:bg-muted" aria-label="About Power Consilium System">
+  <section id="about" className="py-16 md:py-24 bg-background" aria-label="About Power Consilium System">
     <div className="container">
-      <motion.div
-        initial={{ opacity: 0, y: 40 }}
-        whileInView={{ opacity: 1, y: 0 }}
-        viewport={{ once: true }}
-        transition={{ duration: 0.6 }}
-        className="text-center mb-12"
-      >
-        <h2 className="text-3xl md:text-4xl font-bold text-foreground mb-4">About Us</h2>
-        <div className="w-20 h-1 bg-secondary mx-auto mb-6" />
-        <p className="max-w-3xl mx-auto text-muted-foreground leading-relaxed">
-          Established in 2013 at Mumbai, Maharashtra, <strong>Power Consilium System (PCS)</strong> is a
-          Sole Proprietorship firm engaged as the foremost Wholesale Trader of Industrial UPS, Online UPS,
-          Power Inverter, UPS Battery and more. We also provide Pan India UPS AMC Service, UPS Repairing
-          Service and Energy & Power Audit Services.
-        </p>
-      </motion.div>
+      {/* Who We Are - Split layout */}
+      <div className="grid lg:grid-cols-2 gap-10 items-center mb-16">
+        {/* Image grid with experience badge */}
+        <motion.div
+          initial={{ opacity: 0, x: -40 }}
+          whileInView={{ opacity: 1, x: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.6 }}
+          className="relative"
+        >
+          <div className="grid grid-cols-2 gap-3">
+            <img src="/images/service-inspection.jpg" alt="UPS site inspection" className="rounded-xl w-full h-48 object-cover" width={640} height={640} loading="lazy" />
+            <img src="/images/service-installation.jpg" alt="UPS installation" className="rounded-xl w-full h-48 object-cover" width={640} height={640} loading="lazy" />
+            <img src="/images/service-repair.jpg" alt="UPS repair services" className="rounded-xl w-full h-48 object-cover" width={640} height={640} loading="lazy" />
+            <img src="/images/about-team.jpg" alt="PCS professional team" className="rounded-xl w-full h-48 object-cover" width={800} height={600} loading="lazy" />
+          </div>
+          {/* Floating experience badge */}
+          <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 bg-secondary text-secondary-foreground rounded-xl p-5 shadow-xl text-center">
+            <p className="text-3xl md:text-4xl font-extrabold">10+</p>
+            <p className="text-sm font-medium">Years of Experience</p>
+          </div>
+        </motion.div>
 
-      {/* Company overview */}
-      <motion.div
-        initial={{ opacity: 0, y: 30 }}
-        whileInView={{ opacity: 1, y: 0 }}
-        viewport={{ once: true }}
-        transition={{ duration: 0.5, delay: 0.1 }}
-        className="bg-card dark:bg-card rounded-xl p-8 shadow-md mb-8"
-      >
-        <h3 className="text-xl font-semibold text-primary mb-3 flex items-center gap-2">
-          <Building className="w-5 h-5" aria-hidden="true" /> Who We Are
-        </h3>
-        <p className="text-muted-foreground leading-relaxed">
-          PCS is an Information & Infrastructure Technology based company and a leading provider of power
-          infrastructure solutions. Founded by a group of senior executives and entrepreneurs with wide
-          experience in Technical aspect, Facility Management, Consulting, HR and General Management —
-          including card-level expertise with MNC companies like APC-MGE, Emerson and Numeric.
-        </p>
-        <p className="text-muted-foreground leading-relaxed mt-3">
-          With head office in Mumbai and direct presence in <strong>Mumbai, Pune, Bangalore and Delhi</strong>,
-          PCS has 16+ direct support locations and partnerships in 14 more locations covering a total of
-          <strong> 30 support locations</strong> across North, West and South India.
-        </p>
-      </motion.div>
+        {/* Text content */}
+        <motion.div
+          initial={{ opacity: 0, x: 40 }}
+          whileInView={{ opacity: 1, x: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.6 }}
+        >
+          <span className="text-sm font-semibold text-secondary uppercase tracking-wider">Who we are</span>
+          <h2 className="text-3xl md:text-4xl font-bold text-foreground mt-2 mb-4">
+            Unlocking Power Efficiency with Cutting-Edge UPS Solutions
+          </h2>
+          <p className="text-muted-foreground leading-relaxed mb-4">
+            Welcome to <strong>Power Consilium System (PCS)</strong>, a trusted provider of UPS and power infrastructure solutions.
+            Established in 2013 in Mumbai, Maharashtra, PCS is an Information & Infrastructure Technology based company
+            providing power solutions for corporate and IT business areas.
+          </p>
+          <p className="text-muted-foreground leading-relaxed mb-6">
+            Founded by senior executives with wide experience in Technical aspect, Facility Management and Consulting —
+            including card-level expertise with MNC companies like APC-MGE, Emerson and Numeric. With head office in Mumbai
+            and direct presence in <strong>Mumbai, Pune, Bangalore and Delhi</strong>.
+          </p>
 
-      {/* Mission */}
-      <motion.div
-        initial={{ opacity: 0, y: 30 }}
-        whileInView={{ opacity: 1, y: 0 }}
-        viewport={{ once: true }}
-        transition={{ duration: 0.5, delay: 0.2 }}
-        className="bg-card dark:bg-card rounded-xl p-8 shadow-md mb-12"
-      >
-        <h3 className="text-xl font-semibold text-primary mb-3 flex items-center gap-2">
-          <Target className="w-5 h-5" aria-hidden="true" /> Our Mission
-        </h3>
-        <ul className="space-y-2 text-muted-foreground">
-          <li>• Provide reliable, efficient and scalable UPS systems and services</li>
-          <li>• Responsive service and technical expertise across Pan India</li>
-          <li>• Best-in-class products customized for maximum uptime and cost effectiveness</li>
-          <li>• Deliver delighted customer experience through 30+ support locations</li>
-        </ul>
-      </motion.div>
+          <ul className="grid sm:grid-cols-2 gap-2 mb-6">
+            {highlights.map((h) => (
+              <li key={h} className="flex items-center gap-2 text-sm text-foreground">
+                <CheckCircle className="w-4 h-4 text-secondary flex-shrink-0" aria-hidden="true" />
+                {h}
+              </li>
+            ))}
+          </ul>
 
-      {/* Stats */}
+          <a href="#services" className="inline-block px-6 py-3 bg-primary text-primary-foreground font-semibold rounded-lg hover:opacity-90 transition-opacity" title="Learn more about our services">
+            Learn More
+          </a>
+        </motion.div>
+      </div>
+
+      {/* Stats counters */}
       <div className="grid grid-cols-2 md:grid-cols-4 gap-6">
         {stats.map((stat, i) => (
           <motion.div
@@ -81,7 +90,7 @@ const About = () => (
             whileInView={{ opacity: 1, scale: 1 }}
             viewport={{ once: true }}
             transition={{ duration: 0.4, delay: i * 0.1 }}
-            className="text-center bg-card dark:bg-card rounded-xl p-6 shadow-sm"
+            className="text-center bg-card dark:bg-card rounded-xl p-6 shadow-sm border border-border"
           >
             <stat.icon className="w-10 h-10 text-primary mx-auto mb-3" aria-hidden="true" />
             <p className="text-2xl md:text-3xl font-bold text-secondary">{stat.value}</p>
